@@ -1,0 +1,48 @@
+# -*- coding:utf-8-*-
+print('输入你想知道是星期几的年月日')
+a=input('')
+a = [int(n) for n in a.split()]
+year=a[0]
+month=a[1]
+day=a[2]
+switch={
+1:day,
+2:day+31,
+3:day+60,
+4:day+91,
+5:day+121,
+6:day+152,
+7:day+182,
+8:day+213,
+9:day+244,
+10:day+274,
+11:day+305,
+12:day+335,
+}
+chazhi=year-2004
+if(chazhi>=0):
+    day1=int(switch[month]+365*(chazhi-chazhi//4)+366*(chazhi/4))%7
+else:
+    day1=abs(int(switch[month]-2-365*(abs(chazhi)-abs(chazhi//4))-366*(abs(chazhi/4))))%7
+switch1={
+0:b'\xe4\xb8\x89',
+1:b'\xe5\x9b\x9b',
+2:b'\xe4\xba\x94',
+3:b'\xe5\x85\xad',
+4:b'\xe6\x97\xa5',
+5:b'\xe4\xb8\x80',
+6:b'\xe4\xba\x8c',
+}
+switch2={
+0:b'\xe5\x9b\x9b',
+1:b'\xe4\xb8\x89',
+2:b'\xe4\xba\x8c',
+3:b'\xe4\xb8\x80',
+4:b'\xe6\x97\xa5',
+5:b'\xe5\x85\xad',
+6:b'\xe4\xba\x94',
+}
+if(chazhi>=0):
+    print(a[0],'年',a[1],'月',a[2],'日是星期',switch1[day1].decode('utf-8'))
+else:
+    print(a[0],'年',a[1],'月',a[2],'日是星期',switch2[day1].decode('utf-8'))
